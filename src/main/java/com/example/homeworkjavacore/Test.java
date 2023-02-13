@@ -8,7 +8,6 @@ public class Test {
         Car kia = new Car("Kia", "Sportage 4-го поколения", 2.4, "красный", 2018, "Южная Корея");
         Car hyundai = new Car("Hyundai", "Avante", 1.6, "оранжевый", 2016, "Южная Корея");
 
-
         System.out.println(lada);
         System.out.println(audi);
         System.out.println(bmw);
