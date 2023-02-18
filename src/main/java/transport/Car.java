@@ -21,7 +21,6 @@ public class Car {
 
 
 
-
     public Car(String brand, String model, double engineVolume, String color, int productionYear, String productionCountry, String bodyType, String registrationNumber, int numberOfSeats, Key key) {
         this.brand = brand == null || brand == "" ? "default" : brand;
         this.model = model == null || model == "" ? "default" : model;
