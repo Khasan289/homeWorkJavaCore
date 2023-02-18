@@ -22,7 +22,7 @@ public class Car {
 
 
 
-    public Car(String brand, String model, double engineVolume, String color, int productionYear, String productionCountry, String bodyType, String registrationNumber, int numberOfSeats) {
+    public Car(String brand, String model, double engineVolume, String color, int productionYear, String productionCountry, String bodyType, String registrationNumber, int numberOfSeats, Key key) {
         this.brand = brand == null || brand == "" ? "default" : brand;
         this.model = model == null || model == "" ? "default" : model;
         this.engineVolume = engineVolume <= 0 ? 1.5 : engineVolume;
@@ -32,7 +32,7 @@ public class Car {
         this.bodyType = bodyType == null || bodyType == "" ? "default" : bodyType;
         this.registrationNumber = registrationNumber == null || registrationNumber == "" ? "default" : registrationNumber;
         this.numberOfSeats = numberOfSeats <= 0 ? 5 : numberOfSeats;
-        this.key = key;
+        setKey(key);
 
 
     }
@@ -109,22 +109,40 @@ public class Car {
             this.rubber="Сезон задан некорректно";
         }
     }
+
     public static class Key {
-        private final String remoteEngineStart;
-        private final String keylessEntry;
+        private final boolean remoteEngineStart;
+        private final boolean keylessEntry;
 
         public Key(boolean remoteEngineStart, boolean keylessEntry) {
-            this.remoteEngineStart = remoteEngineStart == true ? "Удаленный запуск двигателя" : "Удаленный запуск отсутствует";
-            this.keylessEntry = keylessEntry == true ? "Бесключевой доступ" : "бесключевой доступ отсутствует";
+            this.remoteEngineStart = remoteEngineStart;
+            this.keylessEntry = keylessEntry;
         }
 
-        public String getRemoteEngineStart() {
+        public boolean getRemoteEngineStart() {
             return remoteEngineStart;
         }
 
-        public String getKeylessEntry() {
+        public boolean getKeylessEntry() {
             return keylessEntry;
         }
+
+        @Override
+        public String toString() {
+            return (remoteEngineStart ? "удаленный запуск двигателя" : "удаленный запуск отсутствует") + ", " +
+                    (keylessEntry ? "бесключевой доступ" : "бесключевой доступ отсутствует");
+        }
+    }
+
+    public Key getKey() {
+        return key;
+    }
+
+    public void setKey(Key key) {
+        if (key == null) {
+            key = new Key(false, false);
+        }
+        this.key = key;
     }
 
     @Override
@@ -154,6 +172,6 @@ public class Car {
                 ", регистрационный знак " + registrationNumber + '\'' +
                 ", количество сидячих мест " + numberOfSeats +
                 ", тип резины: " + rubber + '\'' +
-                '}';
+                '}' + key;
     }
 }
