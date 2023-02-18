@@ -126,7 +126,6 @@ public class Car {
         public boolean getKeylessEntry() {
             return keylessEntry;
         }
-
         @Override
         public String toString() {
             return (remoteEngineStart ? "удаленный запуск двигателя" : "удаленный запуск отсутствует") + ", " +
