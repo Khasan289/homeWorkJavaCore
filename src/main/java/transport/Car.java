@@ -2,13 +2,8 @@ package transport;
 
 import java.util.Objects;
 
-public class Car {
-    private final String brand;
-    private final String model;
+public class Car extends Transport {
     private double engineVolume;
-    private String color;
-    private final int productionYear;
-    private final String productionCountry;
     private String transmission;
 
     private final String bodyType;
@@ -21,13 +16,10 @@ public class Car {
 
 
 
-    public Car(String brand, String model, double engineVolume, String color, int productionYear, String productionCountry, String bodyType, String registrationNumber, int numberOfSeats, Key key) {
-        this.brand = brand == null || brand == "" ? "default" : brand;
-        this.model = model == null || model == "" ? "default" : model;
+    public Car(String brand, String model, double engineVolume, String color, int maximumMovementSpeed, int productionYear, String productionCountry, String bodyType, String registrationNumber, int numberOfSeats, Key key) {
+
+        super(brand, model, productionYear, productionCountry, color, maximumMovementSpeed);
         this.engineVolume = engineVolume <= 0 ? 1.5 : engineVolume;
-        this.color = color == null || color == "" ? "белый" : color;
-        this.productionYear = productionYear <= 0 ? 2000 : productionYear;
-        this.productionCountry = productionCountry == null || productionCountry == "" ? "default" : productionCountry;
         this.bodyType = bodyType == null || bodyType == "" ? "default" : bodyType;
         this.registrationNumber = registrationNumber == null || registrationNumber == "" ? "default" : registrationNumber;
         this.numberOfSeats = numberOfSeats <= 0 ? 5 : numberOfSeats;
@@ -36,29 +28,11 @@ public class Car {
 
     }
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
 
     public double getEngineVolume() {
         return engineVolume;
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public int getProductionYear() {
-        return productionYear;
-    }
-
-    public String getProductionCountry() {
-        return productionCountry;
-    }
 
     public String getTransmission() {
         return transmission;
@@ -84,9 +58,6 @@ public class Car {
         this.engineVolume = engineVolume;
     }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
 
     public void setTransmission(String transmission) {
         this.transmission = transmission;
@@ -148,12 +119,12 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return Double.compare(car.engineVolume, engineVolume) == 0 && productionYear == car.productionYear && numberOfSeats == car.numberOfSeats && brand.equals(car.brand) && model.equals(car.model) && color.equals(car.color) && productionCountry.equals(car.productionCountry) && transmission.equals(car.transmission) && bodyType.equals(car.bodyType) && registrationNumber.equals(car.registrationNumber) && rubber.equals(car.rubber);
+        return Double.compare(car.engineVolume, engineVolume) == 0 && numberOfSeats == car.numberOfSeats && Objects.equals(transmission, car.transmission) && Objects.equals(bodyType, car.bodyType) && Objects.equals(registrationNumber, car.registrationNumber) && Objects.equals(rubber, car.rubber) && Objects.equals(key, car.key);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(brand, model, engineVolume, color, productionYear, productionCountry, transmission, bodyType, registrationNumber, numberOfSeats, rubber);
+        return Objects.hash(engineVolume, transmission, bodyType, registrationNumber, numberOfSeats, rubber, key);
     }
 
     @Override
