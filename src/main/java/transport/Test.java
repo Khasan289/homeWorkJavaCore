@@ -2,17 +2,23 @@ package transport;
 
 public class Test {
     public static void main(String[] args) {
-        Bus a = new Bus("Merсedes", "long", 2023, "Germany", "White", 180);
-        Bus b = new Bus("Toyota", "Alphard", 2007, "Japan", "black", 200);
-        Bus c = new Bus("УАЗ", "Буханка", 1992, "Россия", "оливковый", 160);
 
-        Car ab = new Car("Kia", "Optima", 2.0, "red", 250, 2022, "South Korea", "sedan", "333", 4, new Car.Key(false,false));
+        DriverB driverB = new DriverB("Иванов И.В.", true, 5);
+        DriverC driverC = new DriverC("Петров П.П.", true, 7);
+        DriverD driverD = new DriverD("Сидоров С.С.", true, 10);
 
-        System.out.println(a);
-        System.out.println(b);
-        System.out.println(c);
+        Cars audi = new Cars("Audi", "A 8", 3.5,driverB);
 
-        System.out.println(ab);
+        Trucks kamaz = new Trucks("Kamaz", "Tipper", 12.5,driverC);
 
+        Buses toyota = new Buses("Toyota", "Alphard", 3.2,driverD);
+
+        printInfo(audi);
+        printInfo(kamaz);
+        printInfo(toyota);
+    }
+
+    public static void printInfo(Transport<?> transport) {
+        System.out.println("Водитель " + transport.getDriver().getFullName() + " упавляет автомобилем " + transport.getBrand()+ " и будет участвовать в заезде");
     }
 }
