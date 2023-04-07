@@ -46,6 +46,10 @@ public abstract class Transport<T extends Driver> implements Competing{
         this.driver = driver;
     }
 
+    public abstract Type getType();
+
+    public abstract void printType();
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -66,4 +70,5 @@ public abstract class Transport<T extends Driver> implements Competing{
                 ", объём двигателя " + engineCapacity +
                 '}';
     }
+
 }
