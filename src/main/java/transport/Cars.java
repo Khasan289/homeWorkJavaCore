@@ -36,6 +36,11 @@ public class Cars extends Transport<DriverB> {
     }
 
     @Override
+    public void getDiagnosed() {
+        System.out.println("Автомобиль " + getBrand() + " прошел диагностику.");
+    }
+
+    @Override
     public void pitStop() {
         System.out.println("Поменять колеса автомобилю " + getBrand());
     }

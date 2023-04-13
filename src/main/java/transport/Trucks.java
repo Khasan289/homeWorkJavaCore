@@ -34,6 +34,11 @@ public class Trucks extends Transport<DriverC> {
         }
         }
 
+    @Override
+    public void getDiagnosed() {
+        System.out.println("Автомобиль " + getBrand() + " прошел диагностику.");
+    }
+
 
     @Override
     public void pitStop() {
