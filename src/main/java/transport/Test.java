@@ -8,6 +8,7 @@ public class Test {
         DriverD driverD = new DriverD("Сидоров С.С.", true, 10);
 
         Cars audi = new Cars("Audi", "A 8", 3.5, driverB, BodyType.SEDAN);
+        Cars chevrolet = new Cars("Шевроле", "Малибу", 1.5, driverB, BodyType.SEDAN);
 
         Trucks kamaz = new Trucks("Kamaz", "Tipper", 12.5, driverC, LoadCapacity.N3);
 
