@@ -17,7 +17,11 @@ public class Test {
 
         audi.getDiagnosed();
         kamaz.getDiagnosed();
-        toyota.getDiagnosed();
+        try {
+            toyota.getDiagnosed();
+        } catch (TransportTypeException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
