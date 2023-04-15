@@ -50,6 +50,8 @@ public abstract class Transport<T extends Driver> implements Competing{
 
     public abstract void printType();
 
+    public abstract void getDiagnosed() throws TransportTypeException;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

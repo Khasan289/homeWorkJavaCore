@@ -58,4 +58,19 @@ public class Buses extends Transport<DriverD> {
     public void setSize(Size size) {
         this.size = size;
     }
-}
+
+    public void check(Transport a) throws TransportTypeException {
+        if (a.getType() == Type.BUSES) {
+            throw new TransportTypeException("Автобусы диагностику проходить не должны");
+        }
+    }
+        @Override
+        public void getDiagnosed() {
+            try {
+                check(this);
+            } catch (TransportTypeException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
