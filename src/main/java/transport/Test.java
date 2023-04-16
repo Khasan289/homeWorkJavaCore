@@ -21,12 +21,10 @@ public class Test {
         try {
             toyota.getDiagnosed();
         } catch (TransportTypeException e) {
-            throw new RuntimeException(e);
+            System.err.println(e);
         }
 
     }
-
-
     }
 
 
